@@ -41,16 +41,31 @@ def GetData(Koneksi   : object,
             usepandas : bool = False,
            ) -> pd.DataFrame:
     assert len(query) > 10, 'Not sufficient query!'
+    check = 'drop' in query[:10].lower() or \
+            'insert' in query[:10].lower() or \
+            'create' in query[:10].lower()
+    if Koneksi.closed or Koneksi.status != STATUS_READY:
+        print("Transaction is in an aborted state. Rolling back.")
+        Koneksi.rollback()
+
     if not usepandas :
         postgr = Koneksi.cursor()
         postgr.execute(query)
-        raw = postgr.fetchall()
-        header = [item[0] for item in postgr.description]
-        data = pd.DataFrame(raw, columns = header)
+        if not check:
+            raw = postgr.fetchall()
+            header = [item[0] for item in postgr.description]
+            data = pd.DataFrame(raw, columns = header)
+        else:
+            Koneksi.commit()
         postgr.close()
+
     else:
         data = pd.read_sql(query, Koneksi)
-    return data
+
+    if not check:
+        return data
+    else:
+        return 'Success'
 
 if __name__ == '__main__':
     pass
