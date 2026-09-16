@@ -15,6 +15,7 @@ from    configparser    import  ConfigParser
 from    ast             import  literal_eval
 from    typing          import  Optional, Callable
 from    shutil          import  copy as cpfile
+from .settings          import *
 
 TheConfig               = ConfigParser()
 BasedDir                = os.path.dirname(os.path.realpath(__file__))
