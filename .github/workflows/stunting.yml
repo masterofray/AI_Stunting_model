@@ -52,7 +52,7 @@ jobs:
       - name: Run all-around research
         run: |
           python tests/all_around_reasearch.py \
-            --source scr/query/RawData.sql \
+            --source src/query/RawData.sql \
             --output artefact \
             --trials 40 \
             --test-size 0.20 \
