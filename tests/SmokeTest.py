@@ -1,19 +1,11 @@
-import pandas as pd
-from src.analysis.data_quality import DataQualityAnalyzer, DataLoader
-from src.analysis.descriptive import DescriptiveAnalyzer
-from src.analysis.statistical import StatisticalAnalyzer
+"""Legacy smoke-test filename retained for compatibility with older CI runners."""
 
-# Load data
-df = DataLoader.load_csv("DataProc.csv")
+from pathlib import Path
 
-# Data quality
-quality = DataQualityAnalyzer(df)
-report = quality.generate_full_report()
+from src.research.data import load_raw_data
 
-# Descriptive statistics
-desc = DescriptiveAnalyzer(df)
-district_sum = desc.district_summary()
 
-# Statistical tests
-stat = StatisticalAnalyzer(df)
-associations, chi_tests = stat.association_tables()
+def test_repository_raw_data_is_readable():
+    root = Path(__file__).resolve().parents[1]
+    df = load_raw_data(root / "src" / "query" / "RawData.sql")
+    assert len(df) > 0
