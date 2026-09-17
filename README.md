@@ -32,6 +32,45 @@ Output directory: analysis_results
 
 ---
 
+## **Modular XGBoost Research Pipeline**
+
+The original Colab notebook `NB02_directly_XGBoost_NOGraphic` has been refactored into a reusable pipeline under `src/research/`, with explainable-AI utilities under `xai/`. The workflow reads the repository RawData SQL, runs data-quality and descriptive/association analysis, creates a stratified train/test split, fits a baseline XGBoost classifier, tunes hyperparameters with Optuna, evaluates the tuned model, and produces native XGBoost, SHAP, and optional LIME explanations.
+
+### Run the complete research pipeline
+
+```bash
+python test/all_around_reasearch.py \
+  --source scr/query/RawData.sql \
+  --output artefact \
+  --trials 40 \
+  --test-size 0.20 \
+  --seed 42 \
+  --xai-samples 5
+```
+
+The generated layout is: `artefact/graphics/` for PNG figures, `artefact/json/` for machine-readable reports, `artefact/data/` for raw/split/tabular outputs, `artefact/xai/` for explanations, `artefact/model/` for the fitted model, and `artefact/stunting_research_artifacts.zip` for a single downloadable bundle.
+
+The GitHub Actions workflow `.github/workflows/stunting.yml` runs unit tests, executes this end-to-end research job, verifies representative outputs, and publishes both the ZIP bundle and the expanded artifact directory.
+
+### Modular source layout
+
+```text
+src/research/
+  analysis.py          # descriptive + association analysis
+  cli.py               # package CLI entry point
+  config.py            # feature/model/output configuration
+  data.py              # CSV/SQL loading, validation, splitting
+  pipeline.py          # end-to-end orchestration
+  visualization.py     # CI-friendly static graphics
+  xgboost_model.py     # baseline, Optuna tuning, evaluation
+xai/
+  explain.py           # native XGBoost + SHAP + optional LIME
+test/
+  all_around_reasearch.py  # end-to-end executable requested for CI/local use
+```
+
+---
+
 ## **Dataset Overview**
 
 ### **Basic Information**
