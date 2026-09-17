@@ -26,7 +26,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--source",
         type=Path,
-        default=ROOT / "scr" / "query" / "RawData.sql",
+        default=ROOT / "src" / "query" / "RawData.sql",
         help="CSV or SQL RawData source",
     )
     parser.add_argument("--output", type=Path, default=ROOT / "artefact")
