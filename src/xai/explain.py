@@ -20,7 +20,7 @@ except ImportError:
     LimeTabularExplainer = None
     LIME_AVAILABLE = False
 
-from research.data import save_json
+from ..research.data import save_json
 
 
 class XAIExplainer:
