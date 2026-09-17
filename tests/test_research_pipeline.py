@@ -7,7 +7,7 @@ from src.research.analysis import ResearchAnalyzer
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW_SQL = ROOT / "scr" / "query" / "RawData.sql"
+RAW_SQL = ROOT / "src" / "query" / "RawData.sql"
 
 
 def test_raw_sql_loader_and_validation():
