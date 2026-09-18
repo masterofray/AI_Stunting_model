@@ -1,3 +1,17 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+__author__     = "Aryanto"
+__copyright__  = "Copyright 2026, masterofray/AI_Stunting_model"
+__credits__    = ["aryanto"]
+__license__    = "GNU_Public"
+__version__    = "0.2.0"
+__maintainer__ = "Aryanto, M.Si"
+__email__      = "aryanto.dandan@gmail.com"
+__created__    = "2026-08-31"
+__modified__   = "2026-09-18"
+
+
 """Rule distillation from an XGBoost ensemble.
 
 Walks every decision path of every tree, converts each root->leaf path into
@@ -8,8 +22,6 @@ The output is a compact, auditable ruleset usable by clinical/public-health
 staff who cannot reason about SHAP values but *can* read:
     IF maternal_education <= 1 AND wealth_quintile <= 2 THEN stunting.
 """
-
-from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path

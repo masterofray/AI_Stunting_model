@@ -1,3 +1,17 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+__author__     = "Aryanto"
+__copyright__  = "Copyright 2026, masterofray/AI_Stunting_model"
+__credits__    = ["aryanto"]
+__license__    = "GNU_Public"
+__version__    = "0.2.0"
+__maintainer__ = "Aryanto, M.Si"
+__email__      = "aryanto.dandan@gmail.com"
+__created__    = "2026-08-31"
+__modified__   = "2026-09-18"
+
+
 """Stability and robustness diagnostics for post-hoc explanations.
 
 Resamples the test/training set B times, recomputes SHAP values, and reports:
@@ -9,8 +23,6 @@ Resamples the test/training set B times, recomputes SHAP values, and reports:
 This is the kind of analysis reviewers ask for when you claim "feature X
 is the most important driver".
 """
-
-from __future__ import annotations
 
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence
