@@ -5,6 +5,7 @@ __pycache__/
 */report.docx
 */report_Q2.docx
 ~$*.*
+~*.tmp
 
 # C extensions
 *.so
