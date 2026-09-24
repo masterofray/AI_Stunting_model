@@ -2,7 +2,10 @@
 __pycache__/
 *.py[codz]
 *$py.class
-*.docx
+*/report.docx
+*/report_Q2.docx
+~$*.*
+~*.tmp
 
 # C extensions
 *.so

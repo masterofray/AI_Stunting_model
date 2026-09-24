@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
+from __future__ import annotations
+
+__author__     = "Aryanto"
+__copyright__  = "Copyright 2026, masterofray/AI_Stunting_model"
+__credits__    = ["aryanto"]
+__license__    = "GNU_Public"
+__version__    = "0.2.0"
+__maintainer__ = "Aryanto, M.Si"
+__email__      = "aryanto.dandan@gmail.com"
+__created__    = "2026-08-31"
+__modified__   = "2026-09-18"
+
+
 """Run the complete stunting research workflow outside a notebook.
 
 Flow: raw stunting data -> data/EDA analysis -> XGBoost baseline -> Optuna tuning
 -> tuned model evaluation -> SHAP/LIME/native XAI -> ZIP artifact.
 """
-
-from __future__ import annotations
 
 import argparse
 from pathlib import Path
